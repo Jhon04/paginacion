@@ -1,9 +1,7 @@
 package SERVLET;
 
-import JSON.MiObjeto;
 import MODELO.Modelo_pagination;
 import UTIL.util_pagination;
-import com.google.gson.Gson;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.List;
@@ -12,8 +10,9 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+//JSON
+import com.google.gson.Gson;
 import org.json.simple.JSONArray;
-import org.json.simple.JSONObject;
 
 @WebServlet(name = "Servlet_pagination", urlPatterns = {"/Servlet_pagination"})
 public class Servlet_pagination extends HttpServlet {
