@@ -13,6 +13,7 @@ import javax.servlet.http.HttpServletResponse;
 //JSON
 import com.google.gson.Gson;
 import org.json.simple.JSONArray;
+import org.json.simple.JSONObject;
 
 @WebServlet(name = "Servlet_pagination", urlPatterns = {"/Servlet_pagination"})
 public class Servlet_pagination extends HttpServlet {
@@ -27,15 +28,18 @@ public class Servlet_pagination extends HttpServlet {
         PrintWriter out = response.getWriter();
         
         try {
-            
             List<Modelo_pagination> lista = uP.listarProducto();
+            JSONObject objJ = new JSONObject();
             JSONArray con = new JSONArray();
             Modelo_pagination mObj = null;
+            /*segunda peticion*/
             for(Object objTmp : lista){
                 Modelo_pagination mp = (Modelo_pagination) objTmp;
                 mObj = new Modelo_pagination(mp.getId_p(), mp.getNo_p());
                 con.add(mObj);
             }
+            objJ.put("Registros", uP.totalLista());
+            con.add(objJ);
             out.println(gson.toJson(con));
             out.flush();
 

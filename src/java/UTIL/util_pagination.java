@@ -35,4 +35,18 @@ public class util_pagination {
         return lista;
     }
     
+    public int totalLista(){
+        int total = 0;
+        try{
+            pst = con.prepareStatement("call USP_TOTAL_LISTA");
+            rs = pst.executeQuery();
+            if(rs.next()){
+                total = rs.getInt(1);
+            }
+        }catch(SQLException ex){
+            
+        }
+        return total;
+    }
+    
 }

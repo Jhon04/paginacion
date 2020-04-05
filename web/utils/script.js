@@ -10,29 +10,34 @@ document.addEventListener("DOMContentLoaded", function() {
     xhr.addEventListener('load', e => {
         const data = JSON.parse(e.target.responseText);
         console.log(data);
+        console.log(data[data.length - 1]);
         draw(data);
     });
-    
     // FIN - AJAX
     
     xhr.send();
     
     function draw(data){
+        
+        data.pop();
         for(let obt of data){
-            const container = document.createElement('div');
-            container.setAttribute("Class","c");
-            const title = document.createElement('div');
-            title.setAttribute("Class","c2");
-            const content = document.createElement('div');
-            content.setAttribute("Class","c3");
+                
+                const container = document.createElement('div');
+                container.setAttribute("Class","c");
+                const title = document.createElement('div');
+                title.setAttribute("Class","c2");
+                const content = document.createElement('div');
+                content.setAttribute("Class","c3");
 
-            title.textContent = obt.id_p;
-            content.textContent = obt.no_p;
+                title.textContent = obt.id_p;
+                content.textContent = obt.no_p;
 
-            container.appendChild(title);
-            container.appendChild(content);
+                container.appendChild(title);
+                container.appendChild(content);
 
-            res.appendChild(container);
+                res.appendChild(container);
+                
+                //console.log((obt.Registros));
         }
     }
     
